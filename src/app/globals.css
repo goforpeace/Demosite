@@ -120,6 +120,22 @@
           transform: translateY(0) scale(1) rotateX(0);
       }
   }
+  
+  @keyframes card-float {
+      0% {
+          transform: translateY(0px) rotateX(-2deg) rotateY(2deg);
+      }
+      50% {
+          transform: translateY(-20px) rotateX(2deg) rotateY(-2deg);
+      }
+      100% {
+          transform: translateY(0px) rotateX(-2deg) rotateY(2deg);
+      }
+  }
+  
+  .animate-card-float {
+      animation: card-float 10s ease-in-out infinite;
+  }
 
   .animate-float-in {
       animation: float-in 1s ease-out forwards;

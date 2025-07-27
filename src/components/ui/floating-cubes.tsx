@@ -69,7 +69,7 @@ export function FloatingCubes() {
     if (!cubes.length) return null;
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden perspective-1000">
+    <div className="fixed -z-10 inset-0 w-full h-full overflow-hidden perspective-1000">
       {cubes.map((cube) => (
         <Cube key={cube.id} {...cube} />
       ))}

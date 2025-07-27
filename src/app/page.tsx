@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { FloatingCubes } from '@/components/ui/floating-cubes';
 import { Droplets, Leaf, Shield, MapPin, Phone, Mail, Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -103,11 +102,10 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background scroll-smooth" style={{ perspective: '1000px' }}>
+    <div className="flex flex-col min-h-screen bg-transparent scroll-smooth" style={{ perspective: '1000px' }}>
       <Header />
       <main className="flex-grow">
         <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center text-center overflow-hidden">
-            <FloatingCubes />
             <div className="relative z-10 p-4 animate-float-in">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-foreground">
                     The Future of Hygiene is <span className="text-primary">Here</span>.
@@ -159,7 +157,7 @@ export default function Home() {
             </div>
         </section>
         
-        <section id="products" className="py-20 lg:py-32 bg-secondary overflow-hidden">
+        <section id="products" className="py-20 lg:py-32 bg-secondary/50 backdrop-blur-sm overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12 animate-float-in">
                      <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight">Our Product Range</h2>
@@ -167,8 +165,8 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {products.map((product, index) => (
-                        <div key={index} className={`animate-card-float-in ${product.gridClass}`} style={{animationDelay: `${index * 150}ms`}}>
-                            <Card className="overflow-hidden transition-all duration-500 hover:shadow-2xl hover:!scale-105 h-full">
+                        <div key={index} className={`animate-card-float ${product.gridClass}`} style={{animationDelay: `${index * 150}ms`}}>
+                            <Card className="overflow-hidden transition-all duration-500 hover:shadow-2xl hover:!scale-105 h-full bg-background/80">
                                 <CardHeader className="p-0">
                                     <div className="relative h-60 w-full">
                                         <Image src={product.image} alt={product.title} fill className="object-cover" data-ai-hint={product.hint} />
@@ -202,8 +200,8 @@ export default function Home() {
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                <div className="p-1 h-full animate-card-float-in" style={{animationDelay: `${150 + index * 150}ms`}}>
-                                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <div className="p-1 h-full animate-card-float" style={{animationDelay: `${150 + index * 150}ms`}}>
+                                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-background/80">
                                         <CardHeader className="flex flex-row items-center gap-4 pb-4">
                                              <Avatar>
                                                 <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
@@ -234,15 +232,15 @@ export default function Home() {
         </section>
 
 
-        <section id="contact" className="py-20 lg:py-32 bg-secondary overflow-hidden">
+        <section id="contact" className="py-20 lg:py-32 bg-secondary/50 backdrop-blur-sm overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12 animate-float-in">
                      <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight">Get in Touch</h2>
                      <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-lg">We're here to help. Reach out to us for quotes, support, or any inquiries.</p>
                 </div>
                 <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-                    <div className="animate-card-float-in" style={{animationDelay: `0ms`}}>
-                        <Card className="bg-background h-full">
+                    <div className="animate-card-float" style={{animationDelay: `0ms`}}>
+                        <Card className="bg-background/80 h-full">
                             <CardHeader className="items-center">
                                 <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                                     <MapPin className="h-8 w-8 text-primary"/>
@@ -254,8 +252,8 @@ export default function Home() {
                             </CardContent>
                         </Card>
                     </div>
-                     <div className="animate-card-float-in" style={{animationDelay: `150ms`}}>
-                        <Card className="bg-background h-full">
+                     <div className="animate-card-float" style={{animationDelay: `150ms`}}>
+                        <Card className="bg-background/80 h-full">
                             <CardHeader className="items-center">
                                 <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                                     <Phone className="h-8 w-8 text-primary"/>
@@ -267,8 +265,8 @@ export default function Home() {
                             </CardContent>
                         </Card>
                     </div>
-                    <div className="animate-card-float-in" style={{animationDelay: `300ms`}}>
-                        <Card className="bg-background h-full">
+                    <div className="animate-card-float" style={{animationDelay: `300ms`}}>
+                        <Card className="bg-background/80 h-full">
                             <CardHeader className="items-center">
                                 <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                                     <Mail className="h-8 w-8 text-primary"/>
