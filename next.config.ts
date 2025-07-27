@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.wholesaledomestic.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

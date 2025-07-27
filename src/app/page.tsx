@@ -14,7 +14,7 @@ const products = [
   {
     title: 'AquaFlow Faucet',
     description: 'Smart faucet with touchless operation and water-saving technology.',
-    image: 'https://placehold.co/600x400',
+    image: 'https://images.unsplash.com/photo-1613849925594-415a32298f54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8YSUyMGJhdGhyb29tJTIwd2l0aCUyMHR1YnxlbnwwfHx8fDE3NTM2MjM2NDV8MA&ixlib=rb-4.1.0&q=80&w=1080',
     hint: 'faucet sink',
     gridClass: 'md:col-span-1 lg:col-span-2'
   },
