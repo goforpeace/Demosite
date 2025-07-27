@@ -148,7 +148,7 @@ export default function Home() {
                     </div>
                     <div className="relative h-80 md:h-full w-full animate-in fade-in slide-in-from-right-12 duration-1000 min-h-[300px]">
                          <Image
-                            src="https://placehold.co/800x600"
+                            src="https://st.hzcdn.com/simgs/pictures/bathrooms/award-winning-futuristic-bathroom-design-brilliant-sa-img~e161ee8903c8b1c6_9-1203-1-07b5b4a.jpg"
                             alt="Modern bathroom showcase"
                             fill
                             className="object-cover rounded-xl shadow-lg"
