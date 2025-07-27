@@ -42,7 +42,7 @@ export function FloatingCubes() {
         const generateCubes = () => {
             if (typeof window !== 'undefined' && window.innerWidth < 768) {
                 // Generate fewer cubes for mobile
-                const newCubes = Array.from({ length: 7 }).map((_, i) => ({
+                const newCubes = Array.from({ length: 5 }).map((_, i) => ({
                     id: i,
                     size: Math.random() * 30 + 10,
                     position: { x: Math.random() * 100, y: Math.random() * 100 },
