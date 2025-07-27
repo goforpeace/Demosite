@@ -5,7 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { FloatingCubes } from '@/components/ui/floating-cubes';
-import { Droplets, Leaf, Shield, MapPin, Phone, Mail } from 'lucide-react';
+import { Droplets, Leaf, Shield, MapPin, Phone, Mail, Star } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const products = [
   {
@@ -62,6 +64,41 @@ const features = [
         description: "Built to withstand the test of time, ensuring long-lasting performance and reliability."
     }
 ];
+
+const testimonials = [
+    {
+        name: "Sarah L.",
+        role: "Homeowner",
+        avatar: "https://placehold.co/100x100",
+        hint: 'woman portrait',
+        rating: 5,
+        quote: "The AquaFlow faucet is a game-changer! It's stylish, functional, and I've already noticed a difference in my water bill. Installation was a breeze too."
+    },
+    {
+        name: "Mark T.",
+        role: "Interior Designer",
+        avatar: "https://placehold.co/100x100",
+        hint: 'man portrait',
+        rating: 5,
+        quote: "I specify Hygiene Horizon products for all my high-end bathroom projects. The quality is exceptional and my clients are always thrilled with the futuristic aesthetic."
+    },
+    {
+        name: "Emily R.",
+        role: "Hotel Manager",
+        avatar: "https://placehold.co/100x100",
+        hint: 'woman professional',
+        rating: 5,
+        quote: "We recently upgraded our hotel bathrooms with the Zenith shower systems. Our guests have been raving about the luxurious experience. A fantastic investment!"
+    },
+    {
+        name: "David Chen",
+        role: "Contractor",
+        avatar: "https://placehold.co/100x100",
+        hint: 'professional man',
+        rating: 4,
+        quote: "Solid products, easy to install. The SereneClean bidet toilet is particularly popular with my clients. Great customer support from the Hygiene Horizon team."
+    }
+]
 
 export default function Home() {
   return (
@@ -146,17 +183,65 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="contact" className="py-20 lg:py-32">
+        <section id="testimonials" className="py-20 lg:py-32">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12 animate-in fade-in duration-500">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight">What Our Clients Say</h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-lg">We take pride in our happy customers. Here's what they have to say about their experience with Hygiene Horizon.</p>
+                </div>
+                <Carousel
+                    opts={{
+                        align: "start",
+                        loop: true,
+                    }}
+                    className="w-full max-w-5xl mx-auto"
+                >
+                    <CarouselContent>
+                        {testimonials.map((testimonial, index) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                                <div className="p-1 h-full">
+                                    <Card className="flex flex-col h-full">
+                                        <CardHeader className="flex flex-row items-center gap-4 pb-4">
+                                             <Avatar>
+                                                <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
+                                                <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                                <CardTitle className="text-base">{testimonial.name}</CardTitle>
+                                                <CardDescription>{testimonial.role}</CardDescription>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent className="flex-grow">
+                                            <div className="flex gap-0.5 mb-2">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <Star key={i} className={`h-4 w-4 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground'}`} />
+                                                ))}
+                                            </div>
+                                            <p className="text-sm text-muted-foreground">"{testimonial.quote}"</p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+            </div>
+        </section>
+
+
+        <section id="contact" className="py-20 lg:py-32 bg-secondary">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12 animate-in fade-in duration-500">
                      <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight">Get in Touch</h2>
                      <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-lg">We're here to help. Reach out to us for quotes, support, or any inquiries.</p>
                 </div>
                 <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-                    <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                    <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000 bg-background">
                         <CardHeader className="items-center">
-                            <div className="mx-auto bg-accent/10 p-4 rounded-full w-fit">
-                                <MapPin className="h-8 w-8 text-accent"/>
+                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                <MapPin className="h-8 w-8 text-primary"/>
                             </div>
                             <CardTitle>Our Office</CardTitle>
                         </CardHeader>
@@ -164,10 +249,10 @@ export default function Home() {
                             <p className="text-muted-foreground">123 Future Street, Innovation City, 45678</p>
                         </CardContent>
                     </Card>
-                     <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{animationDelay: `150ms`}}>
+                     <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000 bg-background" style={{animationDelay: `150ms`}}>
                         <CardHeader className="items-center">
-                            <div className="mx-auto bg-accent/10 p-4 rounded-full w-fit">
-                                <Phone className="h-8 w-8 text-accent"/>
+                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                <Phone className="h-8 w-8 text-primary"/>
                             </div>
                             <CardTitle>Phone</CardTitle>
                         </CardHeader>
@@ -175,10 +260,10 @@ export default function Home() {
                             <p className="text-muted-foreground">(123) 456-7890</p>
                         </CardContent>
                     </Card>
-                     <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{animationDelay: `300ms`}}>
+                     <Card className="animate-in fade-in slide-in-from-bottom-8 duration-1000 bg-background" style={{animationDelay: `300ms`}}>
                         <CardHeader className="items-center">
-                            <div className="mx-auto bg-accent/10 p-4 rounded-full w-fit">
-                                <Mail className="h-8 w-8 text-accent"/>
+                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                <Mail className="h-8 w-8 text-primary"/>
                             </div>
                             <CardTitle>Email</CardTitle>
                         </CardHeader>
