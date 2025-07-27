@@ -76,4 +76,65 @@
   .animate-float {
       animation: float 25s linear infinite;
   }
+
+  @keyframes float-in {
+      from {
+          opacity: 0;
+          transform: translateY(50px) translateZ(-50px) rotateX(-20deg);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0) translateZ(0) rotateX(0);
+      }
+  }
+
+  @keyframes float-in-left {
+      from {
+          opacity: 0;
+          transform: translateX(-100px) translateZ(-100px) rotateY(30deg);
+      }
+      to {
+          opacity: 1;
+          transform: translateX(0) translateZ(0) rotateY(0);
+      }
+  }
+
+  @keyframes float-in-right {
+      from {
+          opacity: 0;
+          transform: translateX(100px) translateZ(-100px) rotateY(-30deg);
+      }
+      to {
+          opacity: 1;
+          transform: translateX(0) translateZ(0) rotateY(0);
+      }
+  }
+
+  .animate-float-in {
+      animation: float-in 1s ease-out forwards;
+      animation-timeline: view();
+      animation-range-start: entry 10%;
+      animation-range-end: cover 40%;
+  }
+
+  .animate-float-in-slow {
+      animation: float-in 1.5s ease-out forwards;
+      animation-timeline: view();
+      animation-range-start: entry 10%;
+      animation-range-end: cover 40%;
+  }
+
+  .animate-float-in-left {
+      animation: float-in-left 1s ease-out forwards;
+      animation-timeline: view();
+      animation-range-start: entry 10%;
+      animation-range-end: cover 40%;
+  }
+
+  .animate-float-in-right {
+      animation: float-in-right 1s ease-out forwards;
+      animation-timeline: view();
+      animation-range-start: entry 10%;
+      animation-range-end: cover 40%;
+  }
 }
