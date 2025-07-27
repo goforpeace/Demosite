@@ -167,18 +167,20 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {products.map((product, index) => (
-                        <Card key={index} className={`overflow-hidden transition-all duration-500 hover:shadow-2xl hover:!scale-105 animate-float-in ${product.gridClass}`} style={{animationDelay: `${index * 150}ms`}}>
-                            <CardHeader className="p-0">
-                                <div className="relative h-60 w-full">
-                                    <Image src={product.image} alt={product.title} fill className="object-cover" data-ai-hint={product.hint} />
-                                </div>
-                            </CardHeader>
-                            <CardContent className="p-6">
-                                <CardTitle className="text-xl">{product.title}</CardTitle>
-                                <CardDescription className="mt-2">{product.description}</CardDescription>
-                                <Button variant="link" className="p-0 mt-4 text-primary">Learn More &rarr;</Button>
-                            </CardContent>
-                        </Card>
+                        <div key={index} className={`animate-card-float-in ${product.gridClass}`} style={{animationDelay: `${index * 150}ms`}}>
+                            <Card className="overflow-hidden transition-all duration-500 hover:shadow-2xl hover:!scale-105 h-full">
+                                <CardHeader className="p-0">
+                                    <div className="relative h-60 w-full">
+                                        <Image src={product.image} alt={product.title} fill className="object-cover" data-ai-hint={product.hint} />
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <CardTitle className="text-xl">{product.title}</CardTitle>
+                                    <CardDescription className="mt-2">{product.description}</CardDescription>
+                                    <Button variant="link" className="p-0 mt-4 text-primary">Learn More &rarr;</Button>
+                                </CardContent>
+                            </Card>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -200,7 +202,7 @@ export default function Home() {
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                <div className="p-1 h-full">
+                                <div className="p-1 h-full animate-card-float-in" style={{animationDelay: `${150 + index * 150}ms`}}>
                                     <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                                         <CardHeader className="flex flex-row items-center gap-4 pb-4">
                                              <Avatar>
@@ -239,39 +241,45 @@ export default function Home() {
                      <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-lg">We're here to help. Reach out to us for quotes, support, or any inquiries.</p>
                 </div>
                 <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-                    <Card className="animate-float-in bg-background" style={{animationDelay: `0ms`}}>
-                        <CardHeader className="items-center">
-                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                                <MapPin className="h-8 w-8 text-primary"/>
-                            </div>
-                            <CardTitle>Our Office</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-muted-foreground">123 Future Street, Innovation City, 45678</p>
-                        </CardContent>
-                    </Card>
-                     <Card className="animate-float-in bg-background" style={{animationDelay: `150ms`}}>
-                        <CardHeader className="items-center">
-                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                                <Phone className="h-8 w-8 text-primary"/>
-                            </div>
-                            <CardTitle>Phone</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-muted-foreground">(123) 456-7890</p>
-                        </CardContent>
-                    </Card>
-                     <Card className="animate-float-in bg-background" style={{animationDelay: `300ms`}}>
-                        <CardHeader className="items-center">
-                            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                                <Mail className="h-8 w-8 text-primary"/>
-                            </div>
-                            <CardTitle>Email</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-muted-foreground">contact@hygienehorizon.com</p>
-                        </CardContent>
-                    </Card>
+                    <div className="animate-card-float-in" style={{animationDelay: `0ms`}}>
+                        <Card className="bg-background h-full">
+                            <CardHeader className="items-center">
+                                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                    <MapPin className="h-8 w-8 text-primary"/>
+                                </div>
+                                <CardTitle>Our Office</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">123 Future Street, Innovation City, 45678</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                     <div className="animate-card-float-in" style={{animationDelay: `150ms`}}>
+                        <Card className="bg-background h-full">
+                            <CardHeader className="items-center">
+                                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                    <Phone className="h-8 w-8 text-primary"/>
+                                </div>
+                                <CardTitle>Phone</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">(123) 456-7890</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                    <div className="animate-card-float-in" style={{animationDelay: `300ms`}}>
+                        <Card className="bg-background h-full">
+                            <CardHeader className="items-center">
+                                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                    <Mail className="h-8 w-8 text-primary"/>
+                                </div>
+                                <CardTitle>Email</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">contact@hygienehorizon.com</p>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
             </div>
         </section>
